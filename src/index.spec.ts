@@ -1,4 +1,4 @@
-import { derivePath, getPublicKey, getMasterKeyFromSeed } from './';
+import { deriveFromSeed, getPublicKey, getMasterKeyFromSeed } from './';
 
 const vector_1_seed = '000102030405060708090a0b0c0d0e0f';
 const vector_1 = [
@@ -103,7 +103,7 @@ describe('Test vectors', () => {
         });
         vector_1.forEach(vector => {
             it(`should valid for ${vector.path}`, () => {
-                const { key, chainCode } = derivePath(
+                const { key, chainCode } = deriveFromSeed(
                     vector.path,
                     vector_1_seed,
                 );
@@ -129,7 +129,7 @@ describe('Test vectors', () => {
         });
         vector_2.forEach(vector => {
             it(`should valid for ${vector.path}`, () => {
-                const { key, chainCode } = derivePath(
+                const { key, chainCode } = deriveFromSeed(
                     vector.path,
                     vector_2_seed,
                 );
