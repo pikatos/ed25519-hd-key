@@ -67,7 +67,7 @@ export const isValidPath = (path: string): boolean => {
         .some(isNaN as any /* ts T_T*/);
 };
 
-export const derivePath = (path: Path, masterKey: Keys): Keys => {
+export const deriveFromKey = (path: Path, masterKey: Keys): Keys => {
     if (!isValidPath(path)) {
         throw new Error('Invalid derivation path');
     }
@@ -85,6 +85,6 @@ export const derivePath = (path: Path, masterKey: Keys): Keys => {
     );
 };
 
-export const derivePath = (path: Path, seed: Hex): Keys => {
-    return derivePath(path, getMasterKeyFromSeed(seed));
+export const deriveFromSeed = (path: Path, seed: Hex): Keys => {
+    return deriveFromKey(path, getMasterKeyFromSeed(seed));
 };
